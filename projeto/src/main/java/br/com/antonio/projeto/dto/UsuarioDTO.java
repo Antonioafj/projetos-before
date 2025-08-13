@@ -1,36 +1,27 @@
-package br.com.antonio.projeto.entity;
+package br.com.antonio.projeto.dto;
 
-import br.com.antonio.projeto.dto.UsuarioDTO;
-import jakarta.persistence.*;
+import br.com.antonio.projeto.entity.UsuarioEntity;
+import ch.qos.logback.core.joran.util.beans.BeanUtil;
 import org.springframework.beans.BeanUtils;
 
-import java.util.Objects;
+public class UsuarioDTO {
 
-@Entity
-@Table(name = "USUARIO")
-public class UsuarioEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true)
     private String login;
 
-    @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false)
     private String email;
 
-    public UsuarioEntity(UsuarioDTO usuario){
+    public UsuarioDTO(UsuarioEntity usuario){
         BeanUtils.copyProperties(usuario, this);
     }
 
-    public UsuarioEntity() {
+    public UsuarioDTO(){
+
     }
 
     public Long getId() {
@@ -71,18 +62,5 @@ public class UsuarioEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        UsuarioEntity that = (UsuarioEntity) o;
-        return Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
     }
 }
