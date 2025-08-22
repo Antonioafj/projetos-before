@@ -1,7 +1,7 @@
 
-INSERT INTO USUARIO (ID, EMAIL, LOGIN, NOME , SENHA) VALUES (1, 'antonio@gmail.com', 'antonio', 'Antonio', '123456');
-INSERT INTO USUARIO (ID, EMAIL, LOGIN, NOME , SENHA) VALUES (2, 'antonio1@gmail.com', 'antonio1', 'Antonio1', '1234567');
-INSERT INTO USUARIO (ID, EMAIL, LOGIN, NOME , SENHA) VALUES (3, 'antonio2@gmail.com', 'antonio2', 'Antonio2', '1234568');
+INSERT INTO USUARIO (ID, EMAIL, LOGIN, NOME , SENHA, SITUACAO) VALUES (1, 'antonio@gmail.com', 'antonio', 'Antonio', '123456', 'ATIVO');
+INSERT INTO USUARIO (ID, EMAIL, LOGIN, NOME , SENHA, SITUACAO) VALUES (2, 'antonio1@gmail.com', 'antonio1', 'Antonio1', '1234567', 'INATIVO');
+INSERT INTO USUARIO (ID, EMAIL, LOGIN, NOME , SENHA, SITUACAO) VALUES (3, 'antonio2@gmail.com', 'antonio2', 'Antonio2', '1234568', 'PENDENTE');
 
 
 ALTER SEQUENCE USUARIO_ID_SEQ RESTART WITH 4;

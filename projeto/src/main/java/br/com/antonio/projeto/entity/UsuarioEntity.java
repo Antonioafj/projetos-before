@@ -1,6 +1,7 @@
 package br.com.antonio.projeto.entity;
 
 import br.com.antonio.projeto.dto.UsuarioDTO;
+import br.com.antonio.projeto.entity.enums.TipoSituacaoUsuario;
 import jakarta.persistence.*;
 import org.springframework.beans.BeanUtils;
 
@@ -25,6 +26,10 @@ public class UsuarioEntity {
 
     @Column(nullable = false)
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private TipoSituacaoUsuario situacao;
 
     public UsuarioEntity(UsuarioDTO usuario){
         BeanUtils.copyProperties(usuario, this);
@@ -71,6 +76,14 @@ public class UsuarioEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public TipoSituacaoUsuario getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(TipoSituacaoUsuario situacao) {
+        this.situacao = situacao;
     }
 
     @Override
