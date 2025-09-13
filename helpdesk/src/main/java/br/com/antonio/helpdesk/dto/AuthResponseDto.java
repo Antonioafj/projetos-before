@@ -5,15 +5,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+import java.util.UUID;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class CreatedUserDto {
-
+@NoArgsConstructor
+public class AuthResponseDto {
     String username;
-    String password;
-    String name;
-    String email;
-
+    String acessToken;
+    Long expiresIn;
 }

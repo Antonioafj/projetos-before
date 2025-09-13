@@ -1,4 +1,4 @@
-package br.com.antonio.helpdesk.dto;
+package br.com.antonio.helpdesk.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,48 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreatedUserDto {
+public class Attachment {
 
-    String username;
-    String password;
-    String name;
-    String email;
+    private String filename;
+
+    private String content;
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
