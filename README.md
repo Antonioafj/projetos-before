@@ -1,0 +1,57 @@
+# Repositorio criado para prática de tecnologias Java e Angular
+<img width="850" height="250" alt="gitcapa" src="https://github.com/user-attachments/assets/34839bae-ed43-4f33-aeef-7ac9c476e726" />
+
+
+
+![Static Badge](https://img.shields.io/badge/Status-Em_Desenvolvimento!-blue)
+![Static Badge](https://img.shields.io/badge/API_REST_JAVA_FRONTEND_EM_ANGULAR-green)
+![Static Badge](https://img.shields.io/badge/PROJETOS_DIVERSOS_EM-Java_Back_End_Angular-00FF00)
+
+
+![GitHub Org's stars](https://img.shields.io/github/stars/Antonioafj?style=social)
+
+## PROJETOS
+* [Tecnologias utilizadas](#tecnologias-utilizadas)
+* [Projeto](#Projeto)
+* [Helpdesk](#Helpdesk)
+* [Product-ms](Product-ms)
+
+## tecnologias-utilizadas 
+ # :hammer: Ainda Editando README
+  ## ✔️ Técnicas e tecnologias utilizadas - pelo menos uma ou mais nos diversos projetos desde repositório
+
+✔️``Java``
+✔️``InteliJ IDEA``
+✔️``Spring Data JPA``
+✔️``MySQL``
+✔️``Persitencia De Dados``
+✔️`` API REST ``
+✔️`` Spring Security ``
+✔️`` CRUD ``
+✔️`` FlyWay ``
+✔️`` Migrations `` 
+
+## Projeto 
+  # :hammer: Ainda Editando README
+
+## Helpdesk
+  # :hammer: Ainda Editando README
+
+## Product-ms
+  # :hammer: Ainda Editando README  
+
+* [Pessoas Contribuidoras](#pessoas-contribuidoras)
+  
+   [<img loading="lazy" src="https://avatars.githubusercontent.com/u/167789057?s=400&u=21052b749353169db846fbab43111257cd8342eb&v=4" width=115><br><sub>Antonio Alves Ferreira Jr.</sub>](https://github.com/Antonioafj)
+
+
+ 
+* [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
+  
+  # Autores
+ 
+   [<img loading="lazy" src="https://avatars.githubusercontent.com/u/167789057?s=400&u=21052b749353169db846fbab43111257cd8342eb&v=4" width=115><br><sub>Antonio Alves Ferreira Jr.</sub>](https://github.com/Antonioafj) 
+  
+
+
+
