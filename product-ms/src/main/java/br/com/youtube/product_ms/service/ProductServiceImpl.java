@@ -5,7 +5,9 @@ import br.com.youtube.product_ms.model.Product;
 import br.com.youtube.product_ms.repository.ProductRepositoy;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Optional<ProductDTO> create(ProductDTO request) {
+        request.setAvailable(true);
         Product product = mapper.map(request , Product.class);
 
         repositoy.saveAndFlush(product);
@@ -56,12 +59,29 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public Optional<ProductDTO> update(Long id, ProductDTO request) {
+        Optional<Product> product = repositoy.findById(id);
+
+        if (product.isPresent()) {
+            product.get().setDescription(request.getDescription());
+            product.get().setPrice(request.getPrice());
+            repositoy.save(product.get());
+            return Optional.of(mapper.map(product.get(), ProductDTO.class));
+
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public boolean inactive(Long id) {
         Optional<Product> product = repositoy.findById(id);
         if (product.isPresent()) {
             product.get().setAvailable(false);
+            repositoy.save(product.get());
             return true;
         }
         return false;
     }
+
+
 }

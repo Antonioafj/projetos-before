@@ -6,6 +6,7 @@ import br.com.youtube.product_ms.service.ProductService;
 import jakarta.persistence.GeneratedValue;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class ProductController {
     @Autowired
     private ProductService service;
 
+    @PostMapping
     public ResponseEntity<ProductDTO> create(@RequestBody @Valid ProductDTO request) {
         Optional<ProductDTO> response = service.create(request);
         if (response.isPresent()) {
@@ -33,7 +35,7 @@ public class ProductController {
         return ResponseEntity.ok(service.getAll());
     }
 
-    @GetMapping("/id}")
+    @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getById(@PathVariable("id") Long id) {
         Optional<ProductDTO> response =  service.getById(id);
 
@@ -41,6 +43,25 @@ public class ProductController {
             return ResponseEntity.ok(response.get());
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ProductDTO> update(@PathVariable("id") Long id,
+                                             @RequestBody @Valid ProductDTO request){
+        Optional<ProductDTO> response = service.update(id, request);
+
+        if (response.isPresent()) {
+            return ResponseEntity.ok(response.get());
+        }
+        return  new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> inactive(@PathVariable("id") Long id) {
+        boolean inacitve = service.inactive(id);
+        return inacitve
+                ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
 
