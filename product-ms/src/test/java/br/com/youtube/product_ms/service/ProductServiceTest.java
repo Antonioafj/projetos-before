@@ -68,6 +68,36 @@ public class ProductServiceTest {
         assertEquals(request.getPrice(), responseById.get().getPrice());
         assertTrue(responseById.get().isAvailable());
     }
+
+    @Test
+    public void shouldUpdateProduct() {
+        ProductDTO request = Fixture.from(ProductDTO.class).gimme("valid");
+        Optional<ProductDTO> response = service.create(request);
+        Long id = response.get().getId();
+
+        String newDescription = "Tesla Phone é com certeza o melhor aparellho feito na historia";
+        request.setDescription(newDescription);
+
+        double newPrice = 9667.54;
+        request.setPrice(newPrice);
+
+        Optional<ProductDTO> updatedProductDTO  = service.update(id, request);
+
+        assertNotNull(updatedProductDTO.get());
+        assertEquals(newDescription, updatedProductDTO.get().getDescription());
+        assertEquals(newPrice, updatedProductDTO.get().getPrice());
+    }
+
+    @Test
+    public void shouldInactivateProduct() {
+        ProductDTO request = Fixture.from(ProductDTO.class).gimme("valid");
+        Optional<ProductDTO> response = service.create(request);
+        Long id = response.get().getId();
+
+        boolean inactive = service.inactive(id);
+
+        assertTrue(inactive);
+    }
 }
 
 
