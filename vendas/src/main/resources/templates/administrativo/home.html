@@ -7,9 +7,10 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Hello, world!</title>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <img src="https://png.pngtree.com/templates/md/20180508/md_5af1e00e55102.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -33,21 +34,42 @@
     </form>
   </div>
 </nav>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
       <ul class="list-group" style="margin-top: 10px;">
-        <li class="list-group-item active">Menu</li>
-        <a href="/cadastroEstado" ><li class="list-group-item">Cadastro Estado</li></a>
+        <li class="list-group-item active"> <i class="fa-solid fa-gears"></i> Funcionalidades </li>
+        <a href="/cadastrarEstado" ><li class="list-group-item"> Efetuar Venda</li></a>
+        <a href="/listarEstado" ><li class="list-group-item"> Listar Venda</li></a>
+        <a href="/cadastrarEntrada" ><li class="list-group-item"> Efetuar Entrada de Produto</li></a>
+        <a href="/listarEntradas" ><li class="list-group-item"> Listar Entrada de Produto</li></a>
+
+        <li class="list-group-item active"> <i class="fa-solid fa-plus"></i> Cadastro </li>
+        <a href="/cadastroEstado"><li class="list-group-item"> Cadastro Estado</li></a>
+        <a href="/cadastroCidade"><li class="list-group-item"> Cadastro Cidade</li></a>
+        <a href="/cadastroFuncionario"><li class="list-group-item"> Cadastro Funcionario</li></a>
+        <a href="/cadastroCliente"><li class="list-group-item"> Cadastro Cliente</li></a>
+        <a href="/cadastroFornecedor"><li class="list-group-item"> Cadastro Fornecedor</li></a>
+        <a href="/cadastroProduto"><li class="list-group-item"> Cadastro Produto</li></a>
+
+        <li class="list-group-item active"> <i class="fa-solid fa-bars"></i>Listas </li>
         <a href="/listarEstado" ><li class="list-group-item">Lista Estado</li></a>
-      </ul>          </div>
+        <a href="/listarCidade"><li class="list-group-item"> Lista Cidade</li></a>
+        <a href="/listarFuncionario"><li class="list-group-item"> Lista Funcionario</li></a>
+        <a href="/listarCliente"><li class="list-group-item"> Lista Cliente</li></a>
+        <a href="/listarFornecedor"><li class="list-group-item"> Lista Fornecedor</li></a>
+        <a href="/listarProduto"><li class="list-group-item"> Lista Produto</li></a>
+      </ul>
+
+    </div>
+
     <div class="col-md-9">
       <h1>Bem vindo ao Sistema De Vendas</h1>
       <p>Sistema de vendas simplificado e intuitivo</p>
     </div>
   </div>
 
-</div>
 
 <!-- Optional JavaScript; choose one of the two! -->
 

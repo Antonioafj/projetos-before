@@ -38,21 +38,26 @@
     </div>
 </nav>
 <div class="container">
-    <form action="/salvarEstado" th:object="${estado}" method="POST">
+    <form action="/salvarCidade" th:object="${cidade}" method="POST">
         <div class="form-group">
-            <label for="id">ID</label>
+            <label for="id">ID:</label>
             <input type="number" readonly="true" class="form-control" id="id" th:field="*{id}" >
 
-            <label for="nome">Nome Estado</label>
-            <input type="text" class="form-control" id="nome" th:field="*{nome}" >
+            <label>Nome Cidade:</label>
+            <input type="text" required class="form-control" id="nome" th:field="*{nome}" >
 
-            <label for="sigla">Sigla</label>
-            <input type="text" class="form-control" id="sigla" th:field="*{sigla}">
+            <label>CEP:</label>
+            <input type="text" required class="form-control" id="cep" th:field="*{cep}">
+
+            <label>Estado:</label>
+            <select th:field="*{estado}" class="form-control">
+                <option th:each="est : ${listarEstados}" th:value="${est.id}" th:text="${est.nome}"></option>
+            </select>
         </div>
 
         <a href=""><button type="submit" class="btn btn-primary"> <i class="fa-solid fa-floppy-disk"></i> Salvar</button></a>
         <a href="/administrativo" class="btn btn-danger"><i class="fa-solid fa-share"></i> Voltar</a>
-        <a href="/listarEstado" class="btn btn-success"><i class="fa-solid fa-list"></i> Listar</a>
+        <a href="/listarCidade" class="btn btn-success"><i class="fa-solid fa-list"></i> Listar</a>
 
     </form>
 

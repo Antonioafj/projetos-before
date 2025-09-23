@@ -55,20 +55,20 @@
         </thead>
 
         <tbody>
-        <tr th:each="estado: ${listarEstado}">
-            <td th:text="${estado.id}"></td>
-            <td th:text="${estado.nome}"></td>
-            <td th:text="${estado.sigla}"></td>
+        <tr th:each="cidade: ${listarCidade}">
+            <td th:text="${cidade.id}"></td>
+            <td th:text="${cidade.nome}"></td>
+            <td th:text="${cidade.sigla}"></td>
             <td colspan="2">
-                <a th:href="@{/editarEstado/{id}(id=${estado.id})}"> Editar <i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-                <a th:href="@{/removerEstado/{id}(id=${estado.id})}">Remover<i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
+                <a th:href="@{/editarCidade/{id}(id=${cidade.id})}"> Editar <i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
+                <a th:href="@{/removerCidade/{id}(id=${cidade.id})}">Remover<i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
             </td>
         </tr>
         </tbody>
 
     </table>
     <a href="/administrativo" class="btn btn-danger"><i class="fa-solid fa-share"></i> Voltar</a>
-    <a href="/cadastroEstado" class="btn btn-primary"><i class="fa-solid fa-plus"></i>  Cadastrar</a>
+    <a href="/cadastroCidade" class="btn btn-primary"><i class="fa-solid fa-plus"></i>  Cadastrar</a>
 </div>
 
 
