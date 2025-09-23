@@ -32,6 +32,10 @@
 ✔️`` CRUD ``
 ✔️`` FlyWay ``
 ✔️`` Migrations `` 
+✔️`` Bootstrap ``
+✔️`` PostgreSQL ``
+✔️`` JQuery ``
+
 
 ## Projeto 
   # :hammer: Ainda Editando README
