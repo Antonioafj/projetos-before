@@ -43,34 +43,44 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     <table class="table" id="tabela">
         <thead>
         <tr>
             <td>ID</td>
             <td>Nome</td>
-            <td>CEP</td>
-            <td>Estado</td>
+            <td>CPF</td>
+            <td>Telefone</td>
+            <td>Endereço</td>
+            <td>Numero</td>
+            <td>Bairro</td>
+            <td>E-mail</td>
+            <td>Cidade</td>
             <td>Ação</td>
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each="cidade: ${listarCidade}">
-            <td th:text="${cidade.id}"></td>
-            <td th:text="${cidade.nome}"></td>
-            <td th:text="${cidade.cep}"></td>
-            <td th:text="${cidade.estado.nome}"></td>
+        <tr th:each="cliente: ${listarCliente}">
+            <td th:text="${cliente.id}"></td>
+            <td th:text="${cliente.nome}"></td>
+            <td th:text="${cliente.cpf}"></td>
+            <td th:text="${cliente.telefone}"></td>
+            <td th:text="${cliente.endereco}"></td>
+            <td th:text="${cliente.numero}"></td>
+            <td th:text="${cliente.bairro}"></td>
+            <td th:text="${cliente.email}"></td>
+            <td th:text="${cliente.cidade.nome}"></td>
             <td colspan="2">
-                <a th:href="@{/editarCidade/{id}(id=${cidade.id})}"> Editar <i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
-                <a th:href="@{/removerCidade/{id}(id=${cidade.id})}">Remover<i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
+                <a th:href="@{/editarCliente/{id}(id=${cliente.id})}"> Editar <i class="fa-solid fa-pen-to-square" style="color: blue;"></i></a>
+                <a th:href="@{/removerCliente/{id}(id=${cliente.id})}">Remover<i class="fa-solid fa-trash-can" style="color: #ff3939;"></i></a>
             </td>
         </tr>
         </tbody>
 
     </table>
     <a href="/administrativo" class="btn btn-danger"><i class="fa-solid fa-share"></i> Voltar</a>
-    <a href="/cadastroCidade" class="btn btn-primary"><i class="fa-solid fa-plus"></i>  Cadastrar</a>
+    <a href="/cadastroCliente" class="btn btn-primary"><i class="fa-solid fa-plus"></i>  Cadastrar</a>
 </div>
 
 

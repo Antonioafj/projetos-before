@@ -37,30 +37,75 @@
         </form>
     </div>
 </nav>
+
+
 <div class="container">
-    <form action="/salvarCidade" th:object="${cidade}" method="POST">
+
+    <form action="/salvarFuncionario" th:object="${funcionario}" method="POST">
         <div class="form-group">
-            <label for="id">ID:</label>
-            <input type="number" readonly="true" class="form-control" id="id" th:field="*{id}" >
 
-            <label>Nome Cidade:</label>
-            <input type="text" required class="form-control" id="nome" th:field="*{nome}" >
+            <div class="row">
+                <div class="col-md">
+                    <label for="id">ID:</label>
+                    <input type="number" readonly="true" class="form-control" id="id" th:field="*{id}" >
+                </div>
+                <div class="col-md">
+                    <label>Nome Funcionario:</label>
+                    <input type="text" required class="form-control" id="nome" th:field="*{nome}" >
 
-            <label>CEP:</label>
-            <input type="text" required class="form-control" id="cep" th:field="*{cep}">
+                </div>
+                <div class="col-md">
 
-            <label>Estado:</label>
-            <select th:field="*{estado}" class="form-control">
-                <option th:each="est : ${listarEstados}" th:value="${est.id}" th:text="${est.nome}"></option>
-            </select>
-        </div>
+                    <label>CPF:</label>
+                    <input type="text"  required class="form-control" id="cpf" th:field="*{cpf}" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md">
+                    <label>Telefone:</label>
+                    <input type="text" required  class="form-control" id="telefone" th:field="*{telefone}" >
+                </div>
+                <div class="col-md">
+                    <label>Endereço:</label>
+                    <input type="text" required class="form-control" id="endereco" th:field="*{endereco}" >
+
+                </div>
+                <div class="col-md">
+                    <label>Número:</label>
+                    <input type="text" required class="form-control" id="numero" th:field="*{numero}" >
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label>Bairro:</label>
+                    <input type="text" required class="form-control" id="bairro" th:field="*{bairro}" >
+                </div>
+                <div class="col-md">
+                    <label>Email:</label>
+                    <input type="text" required class="form-control" id="email" th:field="*{email}" >
+
+                </div>
+                <div class="col-md">
+                    <label>Função:</label>
+                    <input type="text" required class="form-control" id="funcao" th:field="*{funcao}" >
+
+                </div>
+                <div class="col-md">
+                    <label>Cidade:</label>
+                    <select th:field="*{cidade}" class="form-control">
+                        <option th:each="est : ${listarCidades}" th:value="${est.id}" th:text="${est.nome}"></option>
+                    </select>
+                </div>
+            </div>
+    </div>
 
         <a href=""><button type="submit" class="btn btn-primary"> <i class="fa-solid fa-floppy-disk"></i> Salvar</button></a>
         <a href="/administrativo" class="btn btn-danger"><i class="fa-solid fa-share"></i> Voltar</a>
-        <a href="/listarCidade" class="btn btn-success"><i class="fa-solid fa-list"></i> Listar</a>
+        <a href="/listarFuncionario" class="btn btn-success"><i class="fa-solid fa-list"></i> Listar</a>
 
     </form>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -69,7 +114,8 @@
 
 <script !src="">
     $(document).ready(function(){
-        $('#cep').mask('99.999-999');
+        $('#cpf').mask('999.999.999-99');
+        $('#telefone').mask('(99)9 9999-99999');
     });
 </script>
 
