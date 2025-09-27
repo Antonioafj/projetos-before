@@ -23,6 +23,7 @@ public class ItemEntrada implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Double quantidade;
+    private Double valorCusto;
     private Double valor;
     @ManyToOne
     private Entrada entrada;

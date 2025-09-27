@@ -20,8 +20,8 @@ public class Entrada implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String obs;
-    private Double valorTotal=0.00;
-    private Double quantidadeTotal=0.00;
+    private Double valorTotal = 0.00;
+    private Double quantidadeTotal = 0.00;
     private Date dataEntrada = new Date();
     @ManyToOne
     private Fornecedor fornecedor;
