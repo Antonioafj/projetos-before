@@ -1,13 +1,14 @@
 package br.com.antonio.vendas.repository;
 
 import br.com.antonio.vendas.models.ItemEntrada;
+import br.com.antonio.vendas.models.ItemVenda;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ItemEntradaRepository extends JpaRepository<ItemEntrada, Long> {
+public interface ItemVendaRepository extends JpaRepository<ItemVenda, Long> {
 
-    @Query("SELECT e FROM ItemEntrada e WHERE e.entrada.id = ?1")
-    List<ItemEntrada> buscarPorEntrada(Long id);
+    @Query("SELECT e FROM ItemVenda e WHERE e.venda.id = ?1")
+    List<ItemVenda> buscarPorVenda(Long id);
 }

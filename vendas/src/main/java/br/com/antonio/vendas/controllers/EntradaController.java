@@ -52,11 +52,13 @@ public class EntradaController {
         return mv;
     }
 
-//    @GetMapping("/editarEntrada/{id}")
-//    public ModelAndView edita(@PathVariable("id") Long id) {
-//        Optional<Entrada> entrada = entradaRepository.findById(id);
-//        return cadastar(entrada.get());
-    //  }
+    @GetMapping("/editarEntrada/{id}")
+    public ModelAndView edita(@PathVariable("id") Long id) {
+        Optional<Entrada> entrada = entradaRepository.findById(id);
+        this.listaItemEntrada = itemEntradaRepository.buscarPorEntrada(entrada.get().getId());
+
+        return cadastar(entrada.get(), new ItemEntrada());
+      }
 
 //    @GetMapping("/removerEntrada/{id}")
 //    public ModelAndView remover(@PathVariable("id") Long id) {
@@ -82,7 +84,7 @@ public class EntradaController {
 
             for (ItemEntrada item : listaItemEntrada) {
                 item.setEntrada(entrada);
-                itemEntradaRepository.saveAndFlush(itemEntrada);
+                itemEntradaRepository.saveAndFlush(item);
 
                 Optional<Produto> prod = produtoRepository.findById(item.getProduto().getId());
                 Produto produto = prod.get();
