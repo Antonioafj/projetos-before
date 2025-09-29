@@ -17,6 +17,7 @@
 * [Product-ms](#Product-ms)
 * [Login](#Login)
 * [Vendas](#Vendas)
+* [Crud](#Crud)
 
 ## tecnologias-utilizadas 
  # :hammer: Ainda Editando README
@@ -50,6 +51,9 @@
  # :hammer: Ainda Editando README  
 
 ## Vendas
+ # :hammer: Ainda Editando README
+
+ ## Crud
  # :hammer: Ainda Editando README  
 
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
