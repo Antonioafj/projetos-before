@@ -30,4 +30,29 @@ public class ProductController {
 
             return ResponseEntity.ok().build();
         }
+
+
+    @PutMapping
+    public ResponseEntity update(@RequestBody @Valid ResquestProduct data) {
+        Product product = repository.getReferenceById(data.id());
+        product.setName(data.name());
+        product.setPrice_in_cents(data.price_in_cents());
+        repository.save(product);
+        return  ResponseEntity.ok(product);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

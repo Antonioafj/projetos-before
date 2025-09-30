@@ -1,7 +1,10 @@
 package br.com.antonio.crud.domain.product;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.io.Serializable;
 
 @Table(name = "product")
 @Entity
@@ -10,7 +13,11 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Product {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Product implements Serializable {
+
+    private static final long serialVerisonUID = 1L;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -22,6 +29,7 @@ public class Product {
 
 
     public Product(ResquestProduct resquestProduct) {
+        this.id = resquestProduct.id();
         this.name = resquestProduct.name();
         this.price_in_cents = resquestProduct.price_in_cents();
     }
