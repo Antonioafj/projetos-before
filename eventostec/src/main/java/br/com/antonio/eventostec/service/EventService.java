@@ -2,26 +2,31 @@ package br.com.antonio.eventostec.service;
 
 import br.com.antonio.eventostec.domain.event.Event;
 import br.com.antonio.eventostec.domain.event.EventRequestDTO;
+import br.com.antonio.eventostec.domain.event.EventResponseDTO;
 import br.com.antonio.eventostec.repositories.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
-import software.amazon.awssdk.services.s3.model.PutObjectAclRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 @Service
 public class EventService {
 
+    final long DEZ_ANOS_EM_MS = 10L * 365 * 24 * 60 * 60 * 1000;
 
     @Value("${aws.bucket.name}")
     private String bucketName;
@@ -32,6 +37,9 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private AddressService addressService;
+
     public Event createEvent(EventRequestDTO data) {
         String imUrl = null;
 
@@ -41,7 +49,7 @@ public class EventService {
 
         Event newEvent = new Event();
         newEvent.setTitle(data.title());
-        newEvent.setDescription(data.discription());
+        newEvent.setDescription(data.description());
         newEvent.setEventUrl(data.eventUrl());
         newEvent.setDate(new Date(data.date()));
         newEvent.setImgUrl(imUrl);
@@ -49,7 +57,53 @@ public class EventService {
 
         eventRepository.save(newEvent);
 
+        if (!data.remote()) {
+            this.addressService.createAdress(data, newEvent);
+        }
+
         return newEvent;
+    }
+
+
+
+    public List<EventResponseDTO> getUpComingEvents(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Event> eventsPage = this.eventRepository.findUpComingEvents(new Date(), pageable);
+        return eventsPage.map(event -> new EventResponseDTO(
+                event.getId(),
+                event.getTitle(),
+                event.getDescription(),
+                event.getDate(),
+                event.getAddress() != null ? event.getAddress().getCity() : "",
+                event.getAddress() != null ? event.getAddress().getUf() : "",
+                event.getRemote(),
+                event.getEventUrl(),
+                event.getImgUrl()
+        )).stream().toList();
+    }
+
+
+    public List<EventResponseDTO> getFilteredEvents(int page, int size, String title, String city, String uf, Date startDate, Date endDate) {
+        title = (title != null) ? title : "";
+        city = (city != null) ? city : "";
+        uf = (uf != null) ? uf : "";
+        startDate = (startDate != null) ? startDate : new Date(0);
+        endDate = (endDate != null) ? endDate : new Date(new Date().getTime() + DEZ_ANOS_EM_MS);
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        Page<Event> eventsPage = this.eventRepository.findFilteredEvents( title, city, uf, startDate, endDate, pageable);
+        return eventsPage.map(event -> new EventResponseDTO(
+                event.getId(),
+                event.getTitle(),
+                event.getDescription(),
+                event.getDate(),
+                event.getAddress() != null ? event.getAddress().getCity() : "",
+                event.getAddress() != null ? event.getAddress().getUf() : "",
+                event.getRemote(),
+                event.getEventUrl(),
+                event.getImgUrl()
+        )).stream().toList();
     }
 
     private String uploadImg(MultipartFile multipartFile) {
@@ -71,7 +125,7 @@ public class EventService {
 
         } catch (Exception e) {
             System.out.println("Erro ao subir arquivo");
-            e.printStackTrace(); // <-- Adicione isto para ver o erro real!
+            e.printStackTrace();
             return "";
         }
     }
@@ -89,6 +143,8 @@ public class EventService {
         fos.close();
         return convFile;
     }
+
+
 }
 
 

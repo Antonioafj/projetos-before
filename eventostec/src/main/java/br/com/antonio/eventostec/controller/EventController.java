@@ -2,11 +2,17 @@ package br.com.antonio.eventostec.controller;
 
 import br.com.antonio.eventostec.domain.event.Event;
 import br.com.antonio.eventostec.domain.event.EventRequestDTO;
+import br.com.antonio.eventostec.domain.event.EventResponseDTO;
 import br.com.antonio.eventostec.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/event")
@@ -28,6 +34,25 @@ public class EventController {
         EventRequestDTO eventRequestDTO = new EventRequestDTO(title, description, date, city, state, remote, eventUrl, image);
         Event newEvent = this.eventService.createEvent(eventRequestDTO);
         return ResponseEntity.ok(newEvent);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<EventResponseDTO>> getEvents(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+            List<EventResponseDTO> allEvents = this.eventService.getUpComingEvents(page, size);
+            return ResponseEntity.ok(allEvents);
+    }
+
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<EventResponseDTO>> getFilteredEvents(@RequestParam(defaultValue = "0") int page,
+                                                                    @RequestParam(defaultValue = "10") int size,
+                                                                    @RequestParam(required = false) String title,
+                                                                    @RequestParam(required = false) String city,
+                                                                    @RequestParam(required = false) String uf,
+                                                                    @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
+                                                                    @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endDate) {
+        List<EventResponseDTO> events = eventService.getFilteredEvents(page, size, title, city, uf, startDate, endDate);
+        return ResponseEntity.ok(events);
     }
 }
 
