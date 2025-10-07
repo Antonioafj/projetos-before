@@ -18,6 +18,7 @@
 * [Login](#Login)
 * [Vendas](#Vendas)
 * [Crud](#Crud)
+* [Eventostec](#Eventostec)
 
 ## tecnologias-utilizadas 
  # :hammer: Ainda Editando README
@@ -36,6 +37,7 @@
 ✔️`` Bootstrap ``
 ✔️`` PostgreSQL ``
 ✔️`` JQuery ``
+✔️`` AWS ``
 
 
 ## Projeto 
@@ -54,6 +56,9 @@
  # :hammer: Ainda Editando README
 
  ## Crud
+ # :hammer: Ainda Editando README  
+ 
+  ## Eventostec
  # :hammer: Ainda Editando README  
 
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
