@@ -1,11 +1,11 @@
 package br.com.antonio.eventostec.controller;
 
 import br.com.antonio.eventostec.domain.event.Event;
+import br.com.antonio.eventostec.domain.event.EventDetailsDTO;
 import br.com.antonio.eventostec.domain.event.EventRequestDTO;
 import br.com.antonio.eventostec.domain.event.EventResponseDTO;
 import br.com.antonio.eventostec.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/event")
@@ -35,6 +36,12 @@ public class EventController {
         Event newEvent = this.eventService.createEvent(eventRequestDTO);
         return ResponseEntity.ok(newEvent);
     }
+
+    @GetMapping("/{eventId}")
+    public ResponseEntity<EventDetailsDTO> getEventDetails(@PathVariable UUID eventId) {
+        EventDetailsDTO eventDetails = eventService.getEventDetails(eventId);
+        return  ResponseEntity.ok(eventDetails);
+}
 
     @GetMapping
     public ResponseEntity<List<EventResponseDTO>> getEvents(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
