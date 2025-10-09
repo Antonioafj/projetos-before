@@ -19,6 +19,7 @@
 * [Vendas](#Vendas)
 * [Crud](#Crud)
 * [Eventostec](#Eventostec)
+* [Auth-api](#Auth-api)
 
 ## tecnologias-utilizadas 
  # :hammer: Ainda Editando README
@@ -38,6 +39,7 @@
 ✔️`` PostgreSQL ``
 ✔️`` JQuery ``
 ✔️`` AWS ``
+✔️`` Auth0 jwt ``
 
 
 ## Projeto 
@@ -59,6 +61,9 @@
  # :hammer: Ainda Editando README  
  
   ## Eventostec
+ # :hammer: Ainda Editando README  
+
+   ## Auth-api
  # :hammer: Ainda Editando README  
 
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
