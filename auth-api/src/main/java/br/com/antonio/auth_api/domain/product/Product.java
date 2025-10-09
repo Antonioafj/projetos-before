@@ -1,4 +1,4 @@
-package br.com.antonio.crud.domain.product;
+package br.com.antonio.auth_api.domain.product;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
