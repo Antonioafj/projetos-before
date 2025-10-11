@@ -20,6 +20,7 @@
 * [Crud](#Crud)
 * [Eventostec](#Eventostec)
 * [Auth-api](#Auth-api)
+* [Bookstore](#Bookstore)
 
 ## tecnologias-utilizadas 
  # :hammer: Ainda Editando README
@@ -65,6 +66,10 @@
 
    ## Auth-api
  # :hammer: Ainda Editando README  
+
+   ## Bookstore
+ # :hammer: Ainda Editando README  
+
 
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
   
