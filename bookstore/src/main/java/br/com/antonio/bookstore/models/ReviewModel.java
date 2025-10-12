@@ -31,7 +31,6 @@ public class ReviewModel implements Serializable {
     @OneToOne
     @JoinColumn(name = "book_id")
     private BookModel book;
-
 }
 
 

@@ -1,5 +1,6 @@
 package br.com.antonio.bookstore.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,11 +29,13 @@ public class BookModel implements Serializable {
     @Column(nullable = false, unique = true)
     private String title;
 
-    @ManyToOne
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToOne//(fetch = FetchType.LAZY)
     @JoinColumn(name = "publisher_id")
     private PublisherModel publisher;
 
-    @ManyToMany
+   // @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ManyToMany//(fetch = FetchType.LAZY)
     @JoinTable(
             name = "tb_books_authors",
             joinColumns = @JoinColumn(name = "book_id"),
