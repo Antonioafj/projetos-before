@@ -18,8 +18,12 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "role_id")
     private Long roleId;
-
     private String name;
+
+
+    public Role(String name) {
+        this.name.equalsIgnoreCase(name);
+    }
 
 
     public enum Values {
