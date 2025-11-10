@@ -23,6 +23,7 @@
 * [Bookstore](#Bookstore)
 * [Simpletwiter](#Simpletwiter)
 * [Security](#Security)
+* [Apideteste](#Apideteste)
 
 ## tecnologias-utilizadas 
  # :hammer: Ainda Editando README
@@ -76,6 +77,9 @@
  # :hammer: Ainda Editando README
 
    ## Security
+ # :hammer: Ainda Editando README  
+
+   ## Apideteste
  # :hammer: Ainda Editando README  
 
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
