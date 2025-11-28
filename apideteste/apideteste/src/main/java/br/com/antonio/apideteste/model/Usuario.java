@@ -2,9 +2,20 @@ package br.com.antonio.apideteste.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="usuario")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
 
     @Id
@@ -13,66 +24,22 @@ public class Usuario {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "nome", length = 200, nullable = true)
+    @NotBlank(message = "O nome é obrigatório")
+    @Size(message = "o nome deve ter no mínimo 3 caracteres")
+    @Column(name = "nome", length = 200, nullable = false)
     private String nome;
 
-    @Column(name = "email", length = 50, nullable = true)
+    @Email(message = "Ensira o email válido")
+    @NotBlank(message = "O email é obrigatório")
+    @Column(name = "email", length = 50, nullable = false)
     private String email;
 
-    @Column(name = "senha", columnDefinition = "TEXT", nullable = true)
+    @NotBlank(message = "A senha é obrigatória")
+    @Column(name = "senha", columnDefinition = "TEXT", nullable = false)
     private String senha;
 
-    @Column(name = "telefone", length = 15, nullable = true)
+    @NotBlank(message = "O telefone é obrigatório")
+    @Column(name = "telefone", length = 15, nullable = false)
     private String telefone;
 
-    public Usuario() {
-    }
-
-    public Usuario(String telefone, String senha, String email, String nome, Integer id) {
-        this.telefone = telefone;
-        this.senha = senha;
-        this.email = email;
-        this.nome = nome;
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 }
