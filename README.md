@@ -24,6 +24,7 @@
 * [Simpletwiter](#Simpletwiter)
 * [Security](#Security)
 * [Apideteste](#Apideteste)
+* [Auth-api-jwt](#Auth-api-jwt)
 
 ## tecnologias-utilizadas 
  # :hammer: Ainda Editando README
@@ -81,6 +82,10 @@
 
    ## Apideteste
  # :hammer: Ainda Editando README  
+
+   ## Auth-api-jwt
+ # :hammer: Ainda Editando README  
+
 
 * [Pessoas Contribuidoras](#pessoas-contribuidoras)
   
