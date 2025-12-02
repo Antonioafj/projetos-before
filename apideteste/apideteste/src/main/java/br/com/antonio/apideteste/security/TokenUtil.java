@@ -23,14 +23,14 @@ public class TokenUtil {
     private static final String EMISSOR= "DevNice";
 
 
-    private  static String createToken(Usuario usario) {
+    public static String createToken(Usuario usario) {
         Key secretKey = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
         String token;
         token = Jwts.builder()
                 .subject(usario.getNome())
                 .issuer(EMISSOR)
-                .expiration(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION))
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
 

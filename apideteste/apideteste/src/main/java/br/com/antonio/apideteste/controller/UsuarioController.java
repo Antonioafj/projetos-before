@@ -1,7 +1,9 @@
 package br.com.antonio.apideteste.controller;
 
 
+import br.com.antonio.apideteste.dto.UsuarioDto;
 import br.com.antonio.apideteste.model.Usuario;
+import br.com.antonio.apideteste.security.Token;
 import br.com.antonio.apideteste.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -52,12 +54,12 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Usuario> validarSenha(@Valid @RequestBody Usuario usuario) {
-        Boolean valid = usuarioService.validarSenha(usuario);
-        if (!valid) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    public ResponseEntity<Token> validarSenha(@Valid @RequestBody UsuarioDto usuario) {
+        Token token = usuarioService.gerarToken(usuario);
+        if (token != null) {
+            return ResponseEntity.ok(token);
         }
-        return ResponseEntity.status(200).build();
+        return ResponseEntity.status(403).build();
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
