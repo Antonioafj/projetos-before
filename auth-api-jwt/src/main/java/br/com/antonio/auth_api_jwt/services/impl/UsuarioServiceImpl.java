@@ -34,14 +34,15 @@ public class UsuarioServiceImpl implements UsuarioService {
             Usuario entity = new Usuario(
                     usuarioDto.nome(),
                     usuarioDto.login(),
-                    passwordHash);
+                    passwordHash, usuarioDto.role());
 
             Usuario novoUsuario = usuarioRepository.save(entity);
 
             return new UsuarioDto(
                     novoUsuario.getNome(),
                     novoUsuario.getLogin(),
-                    novoUsuario.getSenha());
+                    novoUsuario.getSenha(),
+                    novoUsuario.getRole());
         } catch (Exception e) {
             throw new RuntimeException("Erro ao criar usuário: " + e.getMessage(), e);
         }

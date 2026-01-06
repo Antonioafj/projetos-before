@@ -2,10 +2,7 @@ package br.com.antonio.auth_api_jwt.models;
 
 
 import br.com.antonio.auth_api_jwt.enums.RoleEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,19 +24,24 @@ public class Usuario implements UserDetails {
     @GeneratedValue
     private Long id;
 
+    @Column(nullable = false)
     private String nome;
 
+    @Column(nullable = false)
     private String login;
 
+    @Column(nullable = false)
     private String senha;
 
+    @Column(nullable = false)
     private RoleEnum role;
 
 
-    public Usuario(String nome, String login, String senha) {
+    public Usuario(String nome, String login, String senha, RoleEnum role) {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        this.role = role;
     }
 
     @Override

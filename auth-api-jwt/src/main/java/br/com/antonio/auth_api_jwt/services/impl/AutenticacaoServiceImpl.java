@@ -62,7 +62,7 @@ public class AutenticacaoServiceImpl implements AuthenticacaoService {
             Algorithm algorithm = Algorithm.HMAC256("my-secret");
 
             return  JWT.require(algorithm)
-                    .withIssuer("auth-api")
+                    .withIssuer("auth-api-jwt")
                     .build()
                     .verify(token)
                     .getSubject();
