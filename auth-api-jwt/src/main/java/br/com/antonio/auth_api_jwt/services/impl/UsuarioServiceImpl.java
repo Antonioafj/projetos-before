@@ -5,6 +5,7 @@ import br.com.antonio.auth_api_jwt.models.Usuario;
 import br.com.antonio.auth_api_jwt.repositories.UsuarioRepository;
 import br.com.antonio.auth_api_jwt.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -13,6 +14,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public UsuarioDto salvar(UsuarioDto usuarioDto) {
@@ -25,10 +29,12 @@ public class UsuarioServiceImpl implements UsuarioService {
                 throw new RuntimeException("Usuário já existe");
             }
 
+            var passwordHash = passwordEncoder.encode(usuarioDto.senha());
+
             Usuario entity = new Usuario(
                     usuarioDto.nome(),
                     usuarioDto.login(),
-                    usuarioDto.senha());
+                    passwordHash);
 
             Usuario novoUsuario = usuarioRepository.save(entity);
 
